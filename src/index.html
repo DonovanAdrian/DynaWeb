@@ -19,26 +19,36 @@
 <body style="display: table-cell; vertical-align: middle; margin: 2em auto">
 
 <!--**What I wanna put here...**-->
+<!--Perhaps later on, add in a "basic" version and an "advanced" version-->
+<!--Basic mode should probably only search on specific sites to reduce errors-->
+<br><br><br>
+<h3>Customize the URL!</h3>
+<input type="text" placeholder="Input Base Website URL" id="baseURLInp">
+<input type="text" placeholder="Input Website URL Suffix" id="suffixURLInp">
+<p style="display: none" id="randomSuffixTxt">Use #### or XXXX format for randomized numbers or letters!</p>
+<p style="display: block" id="defaultSuffixTxt">Format: https://[BaseURL]/[Suffix]/</p>
+<!--(Radio for randomized suffix) and (Radio for specific suffix)-->
+<!--If randomized, show randomSuffixTxt, hide default. If not, hide default and show random.-->
 
-<!--Smol Header (Customize the URL!)-->
-<!--Input Field for base website url (Autofill with YouTube Link)-->
-<!--Input Field for sequence input (### XXX Format for # or X)-->
+<br id="searchCriteriaBR" style="display: none">
+<h3 id="searchCriteriaHeader" style="display: none">Search Criteria?</h3>
+<input type="text" placeholder="Input Search Criteria" style="display: none" id="searchCriteriaInp">
+<p style="display: none" id="randomSearchTxt">Use #### or XXXX format for a dynamic search. Use commas for separate items!</p>
+<p style="display: none" id="defaultSearchTxt">Enter the text you want to find. Use commas for separate items!</p>
+<!--(Radio for dynamic text) and (Radio for specific text)-->
 
-<!--Small Break-->
-<!--Smol Header (Search Criteria*)-->
-<!--Input Field for desired text (XXX Format can be used, with "," if searching for separate items)-->
-
-<!--Small Break-->
-<!--Smol Header (How Many Times?*)-->
+<br id="randCountBR" style="display: none">
+<h3 id="randCountHeader" style="display: none">How Many Times?</h3>
+<input type="number" placeholder="Input How Many Times You'd Like To Find The Criteria" style="display: none" id="randCountInp">
 <!--(Radio for how many times to check for text) and (Radio for how many times to find random websites)-->
-<!--Input Field for # of times to run above radio, default 1 (###)-->
 
-<!--Small Break-->
+<br>
 <!--Checkbox for enabling OCR (If disabled, overrides above * Headers)-->
+<!--Checking this box will show and hide the above hidden fields-->
 
-<!--Small Break-->
-<!--Button (RANDOMIZE!)-->
-<!---->
+<br>
+<button id="activateRandomizer">RANDOMIZE!</button>
+<!--Consider using span here once designing begins. Leave as a button for now, though-->
 
 <h1 style="color:#555; font-size: 2em; font-weight: 400">Welcome!</h1>
 <p style="margin: 0 auto; width: 280px">This particular page is still in work!</p>
