@@ -25,10 +25,10 @@
 <input type="text" placeholder="Input Base Website URL" id="baseURLInp"><br><br>
 <input type="text" placeholder="Input Website URL Suffix" id="suffixURLInp">
 <p style="display: none" id="randomSuffixTxt">Use #### or XXXX format for randomized numbers or letters!</p>
-<p id="defaultSuffixTxt">Format: https://[BaseURL]/[Suffix]/</p>
+<p id="specificSuffixTxt">Format: https://[BaseURL]/[Suffix]/</p>
 <input type="radio" name="customURLRad" id="randomSuffRad">Random Suffix
 <input type="radio" name="customURLRad" checked="checked" id="specificSuffRad">Specific Suffix
-<!--If randomized, show randomSuffixTxt, hide default. If not, hide default and show random.-->
+<!--If randomized, show randomSuffixTxt, hide specific. If not, show specific and hide random.-->
 
 <br><br>
 <h3>Search Criteria?</h3>
@@ -37,6 +37,7 @@
 <p id="defaultSearchTxt">Enter the text you want to find. Use commas for separate items!</p>
 <input type="radio" name="searchCriteriaRad" id="dynamicTxtRad">Dynamic Text
 <input type="radio" name="searchCriteriaRad" checked="checked" id="specificTxtRad">Specific Text
+<!--If dynamic, show dynamicTxtRad, hide specific. If not, hide dynamic and show specific.-->
 
 <br><br>
 <h3>How Many Times?</h3>
