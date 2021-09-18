@@ -10,14 +10,38 @@ function getRandomNumber(){
   return alphabet.charAt(selector);
 }
 
+function getRandomNumberHigh(){
+  let alphabet = "56789";
+  let selector = Math.floor((Math.random() * alphabet.length));
+  return alphabet.charAt(selector);
+}
+
+function getRandomNumberLow(){
+  let alphabet = "12345";
+  let selector = Math.floor((Math.random() * alphabet.length));
+  return alphabet.charAt(selector);
+}
+
 function getRandomLetter(){
+  let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  let selector = Math.floor((Math.random() * alphabet.length));
+  return alphabet.charAt(selector);
+}
+
+function getRandomLetterUpper(){
   let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   let selector = Math.floor((Math.random() * alphabet.length));
   return alphabet.charAt(selector);
 }
 
+function getRandomLetterLower(){
+  let alphabet = "abcdefghijklmnopqrstuvwxyz";
+  let selector = Math.floor((Math.random() * alphabet.length));
+  return alphabet.charAt(selector);
+}
+
 function getRandomAlphaNum(){
-  let alphabet = "123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let alphabet = "123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
   let selector = Math.floor((Math.random() * alphabet.length));
   return alphabet.charAt(selector);
 }
