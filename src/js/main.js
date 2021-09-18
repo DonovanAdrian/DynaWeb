@@ -5,6 +5,7 @@
  */
 
 let basicModeDiv;
+let dropDown;
 let advancedModeDiv;
 let baseURLInp;
 let suffixURLInp;
@@ -18,10 +19,13 @@ let dynamicSearchTxt;
 let randCountInp;
 let activateRandomizer;
 
+let basicModeBool = true;
+
 
 
 window.onload = function initialize() {
   basicModeDiv = document.getElementById('basicModeDiv');
+  dropDown = document.getElementById("websiteDropdown");
   advancedModeDiv = document.getElementById("advancedModeDiv");
   baseURLInp = document.getElementById("baseURLInp");
   suffixURLInp = document.getElementById("suffixURLInp");
@@ -36,7 +40,7 @@ window.onload = function initialize() {
   activateRandomizer = document.getElementById("activateRandomizer");
 
   activateRandomizer.onclick = function() {
-    fetchRandomPage();
+    pageRandomizer();
   }
 
   showHideSearchCriteria.onclick = function() {
@@ -48,17 +52,65 @@ window.onload = function initialize() {
   }
 }
 
-function fetchRandomPage() {
-  alert("Sorry bruh, this doesn't work yet!");
-  //basic or advanced check
-  //basic
-  //youtube formula: https://www.youtube.com/watch?v=88888888888 (11 numbers or letters)
-  //imgur formula: https://imgur.com/gallery/8888888 (7 numbers OR letters)
-  //wikipedia formula: https://en.wikipedia.org/wiki/88888888888888888888 (any combo of numbers or letters)
-  //advanced
-  //check all user inputs...
-  //if searchCriteriaDiv is hidden or if "how many"/"search criteria" fields are empty...
-  //https://[BaseURL]/[Suffix]/
+function pageRandomizer() {
+
+  if (basicModeBool) {
+    switch (dropDown.value) {
+      case "you":
+        window.open("https://www.youtube.com/watch?v=" + fetchRandom8(11), '_blank').focus();
+        break;
+      case "img":
+        window.open("https://imgur.com/gallery/" + fetchRandom8(7), '_blank').focus();
+        break;
+      case "wiki":
+        window.open("https://en.wikipedia.org/wiki/" + fetchRandom8(getRandomNumberHigh()), '_blank').focus();
+        break;
+      default:
+        console.log("Is this your card? " + dropDown.value);
+        break;
+    }
+  } else {
+    if (searchCriteriaDiv.style.display == "none") {//ALSO ADD if "how many"/"search criteria" fields are empty...
+      //(Check radio position)
+      //Check User Input!!!
+      let url = baseURLInp.value + fetchDynamic(suffixURLInp.value);
+      console.log(url);
+      window.open(url, '_blank').focus();
+    } else {
+      alert("Sorry bruh, this doesn't work yet!");
+    }
+  }
+}
+
+function fetchDynamic(userInput) {
+  let string = "";
+
+  for (let i = 0; i < userInput.length; i++) {
+
+    if (userInput.charAt(i) == "#") {
+      string += getRandomNumber();
+    } else if (userInput.charAt(i) == "X") {
+      string += getRandomLetterUpper();
+    } else if (userInput.charAt(i) == "x") {
+      string += getRandomLetterLower();
+    } else if (userInput.charAt(i) == "8") {
+      string += getRandomAlphaNum();
+    } else {
+      console.log("HECK");
+    }
+  }
+
+  return string;
+}
+
+function fetchRandom8(num) {
+  let string = "";
+
+  for (let i = 0; i < num; i++) {
+    string += getRandomAlphaNum();
+  }
+
+  return string;
 }
 
 /*
@@ -68,13 +120,14 @@ function fetchRandomPage() {
  */
 
 function basicAdvancedMode(mode) {
-  console.log(mode);
   switch (mode) {
     case 'basic':
+      basicModeBool = true;
       basicModeDiv.style.display = "block";
       advancedModeDiv.style.display = "none";
       break;
     case 'advanced':
+      basicModeBool = false;
       basicModeDiv.style.display = "none";
       advancedModeDiv.style.display = "block";
       break;
