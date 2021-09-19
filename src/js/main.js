@@ -19,7 +19,12 @@ let dynamicSearchTxt;
 let randCountInp;
 let activateRandomizer;
 
+let urlString = "";
+let urlCountInt = 1;
 let basicModeBool = true;
+let randomSuffixBool = false;
+let randomSearchBool = false;
+let debugBool = true;
 
 
 
@@ -66,16 +71,21 @@ function pageRandomizer() {
         window.open("https://en.wikipedia.org/wiki/" + fetchRandom8(getRandomNumberHigh()), '_blank').focus();
         break;
       default:
-        console.log("Is this your card? " + dropDown.value);
+        if (debugBool)
+          console.log("Is this your card? " + dropDown.value);
         break;
     }
   } else {
-    if (searchCriteriaDiv.style.display == "none") {//ALSO ADD if "how many"/"search criteria" fields are empty...
-      //(Check radio position)
-      //Check User Input!!!
-      let url = baseURLInp.value + fetchDynamic(suffixURLInp.value);
-      console.log(url);
-      window.open(url, '_blank').focus();
+    checkUserInput();
+    if (searchCriteriaDiv.style.display == "none" || searchCriteriaInp.value == "") {
+      if (randomSuffixBool) {
+        urlString = baseURLInp.value + fetchDynamic(suffixURLInp.value);
+      } else {
+        urlString = baseURLInp.value + suffixURLInp.value;
+      }
+      console.log(urlCountInt + ": " + urlString);
+      window.open(urlString, '_blank').focus();
+      urlCountInt++;
     } else {
       alert("Sorry bruh, this doesn't work yet!");
     }
@@ -96,7 +106,8 @@ function fetchDynamic(userInput) {
     } else if (userInput.charAt(i) == "8") {
       string += getRandomAlphaNum();
     } else {
-      console.log("HECK");
+      if (debugBool)
+        console.log("HECK");
     }
   }
 
@@ -111,6 +122,17 @@ function fetchRandom8(num) {
   }
 
   return string;
+}
+
+function checkUserInput() {//ToDo
+  if (debugBool)
+    console.log("Checking User Input...");
+
+  //check all of the following
+  baseURLInp.value;
+  suffixURLInp.value;
+  searchCriteriaInp.value;
+  randCountInp.value;
 }
 
 /*
@@ -132,7 +154,8 @@ function basicAdvancedMode(mode) {
       advancedModeDiv.style.display = "block";
       break;
     default:
-      console.log("Is this your card? " + mode);
+      if (debugBool)
+        console.log("Is this your card? " + mode);
       break;
   }
 }
@@ -140,23 +163,28 @@ function basicAdvancedMode(mode) {
 function swapRadio(btn) {
   switch (btn) {
     case 'randomSuffRad':
+      randomSuffixBool = true;
       showHideTxt(randomSuffixTxt, "block");
       showHideTxt(specificSuffixTxt, "none");
       break;
     case 'specificSuffRad':
+      randomSuffixBool = false;
       showHideTxt(randomSuffixTxt, "none");
       showHideTxt(specificSuffixTxt, "block");
       break;
     case 'dynamicTxtRad':
+      randomSearchBool = true;
       showHideTxt(randomSearchTxt, "block");
       showHideTxt(dynamicSearchTxt, "none");
       break;
     case 'specificTxtRad':
+      randomSearchBool = false;
       showHideTxt(randomSearchTxt, "none");
       showHideTxt(dynamicSearchTxt, "block");
       break;
     default:
-      console.log("Is this your card? " + btn);
+      if (debugBool)
+        console.log("Is this your card? " + btn);
       break;
   }
 }
@@ -165,7 +193,8 @@ function showHideTxt(txtElement, state) {
   try {
     txtElement.style.display = state;
   } catch (err) {
-    console.log("Something went wrong show/hide-ing the text!");
+    if (debugBool)
+      console.log("Something went wrong show/hide-ing the text!");
   }
 }
 
