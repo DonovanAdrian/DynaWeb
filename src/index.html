@@ -41,7 +41,9 @@
   <h3>Customize the URL!</h3>
   <input type="text" placeholder="Input Base Website URL" id="baseURLInp"><br><br>
   <input type="text" placeholder="Input Website URL Suffix" id="suffixURLInp">
-  <p style="display: none" id="randomSuffixTxt">Use ####, XXXX, or 8888 format for randomized numbers, letters, or both!</p>
+  <p style="display: none" id="randomSuffixTxt">Use the following text for randomizing the suffix:
+    <br>####: Numbers<br>XXXX: Capital Letters<br>xxxx: Lower Case Letters
+    <br>****: Capital OR Lower Case Letters<br>8888: Both Letters And Numbers</p>
   <p id="specificSuffixTxt">Format: https://[BaseURL]/[Suffix]/</p>
   <input type="radio" name="customURLRad" onclick="swapRadio('randomSuffRad')">Random Suffix
   <input type="radio" name="customURLRad" checked="checked" onclick="swapRadio('specificSuffRad')">Specific Suffix
@@ -51,8 +53,10 @@
     <br>
     <h3>Search Criteria?</h3>
     <input type="text" placeholder="Input Search Criteria" id="searchCriteriaInp">
-    <p style="display: none" id="randomSearchTxt">Use ####, XXXX, or 8888 format for a dynamic search. Use commas for separate items!</p>
-    <p id="dynamicSearchTxt">Enter the text you want to find. Use commas for separate items!</p>
+    <p id="dynamicSearchTxt">What are you searching for?</p>
+    <p style="display: none" id="randomSearchTxt">Use the following text for randomizing the search criteria:
+      <br>####: Numbers<br>XXXX: Capital Letters<br>xxxx: Lower Case Letters
+      <br>****: Capital OR Lower Case Letters<br>8888: Both Letters And Numbers</p>
     <input type="radio" name="searchCriteriaRad" onclick="swapRadio('dynamicTxtRad')">Dynamic Text
     <input type="radio" name="searchCriteriaRad" checked="checked" onclick="swapRadio('specificTxtRad')">Specific Text
 
