@@ -103,6 +103,8 @@ function fetchDynamic(userInput) {
       string += getRandomLetterUpper();
     } else if (userInput.charAt(i) == "x") {
       string += getRandomLetterLower();
+    } else if (userInput.charAt(i) == "*") {
+      string += getRandomLetter();
     } else if (userInput.charAt(i) == "8") {
       string += getRandomAlphaNum();
     } else {
