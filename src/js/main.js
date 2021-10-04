@@ -62,19 +62,20 @@ function pageRandomizer() {
   if (basicModeBool) {
     switch (dropDown.value) {
       case "you":
-        window.open("https://www.youtube.com/watch?v=" + fetchRandom8(11), '_blank').focus();
+        urlString = "https://www.youtube.com/watch?v=" + fetchRandom8(11);
         break;
       case "img":
-        window.open("https://imgur.com/gallery/" + fetchRandom8(7), '_blank').focus();
+        urlString = "https://imgur.com/gallery/" + fetchRandom8(7);
         break;
       case "wiki":
-        window.open("https://en.wikipedia.org/wiki/" + fetchRandom8(getRandomNumberHigh()), '_blank').focus();
+        urlString = "https://en.wikipedia.org/wiki/" + fetchRandom8(getRandomNumberHigh());
         break;
       default:
         if (debugBool)
           console.log("Is this your card? " + dropDown.value);
         break;
     }
+    openUrl();
   } else {
     checkUserInput();
     if (searchCriteriaDiv.style.display == "none" || searchCriteriaInp.value == "") {
@@ -83,13 +84,18 @@ function pageRandomizer() {
       } else {
         urlString = baseURLInp.value + suffixURLInp.value;
       }
-      console.log(urlCountInt + ": " + urlString);
-      window.open(urlString, '_blank').focus();
-      urlCountInt++;
+      openUrl();
     } else {
       alert("Sorry bruh, this doesn't work yet!");
     }
   }
+}
+
+function openUrl(){
+  console.log(urlCountInt + ": " + urlString);
+  window.open(urlString, '_blank').focus();
+  fetchImage(urlString);
+  urlCountInt++;
 }
 
 function fetchDynamic(userInput) {
@@ -135,6 +141,18 @@ function checkUserInput() {//ToDo
   suffixURLInp.value;
   searchCriteriaInp.value;
   randCountInp.value;
+}
+
+/*
+*
+* OCR Functionality
+*
+ */
+
+async function fetchImage(imageUrl){
+  let testImage = await fetch(imageUrl);
+  console.log(testImage);
+  console.log(typeof testImage);
 }
 
 /*
