@@ -22,52 +22,59 @@
 </head>
 <body style="display: table-cell; vertical-align: middle; margin: 2em auto">
 
-<h1>OCRWeb</h1>
-<input type="radio" name="basAdvRad" checked="checked" onclick="basicAdvancedMode('basic')">Basic Mode
-<input type="radio" name="basAdvRad" onclick="basicAdvancedMode('advanced')">Advanced Mode
 
-<div id="basicModeDiv">
-  <br>
-  <p>Select a webpage from the following list to fetch a random page! (Generally speaking, you might not find anything...)</p>
-  <select name="websiteDropdown" id="websiteDropdown">
-    <option value="you">Youtube</option>
-    <option value="img">Imgur</option>
-    <option value="wiki">Wikipedia</option>
-  </select>
-</div>
+<div id="mainWeb">
+  <h1>OCRWeb</h1>
+  <input type="radio" name="basAdvRad" checked="checked" onclick="basicAdvancedMode('basic')">Basic Mode
+  <input type="radio" name="basAdvRad" onclick="basicAdvancedMode('advanced')">Advanced Mode
 
-<div id="advancedModeDiv" style="display: none">
-  <br><br>
-  <h3>Customize the URL!</h3>
-  <input type="text" placeholder="Input Base Website URL" id="baseURLInp"><br><br>
-  <input type="text" placeholder="Input Website URL Suffix" id="suffixURLInp">
-  <p style="display: none" id="randomSuffixTxt">Use the following text for randomizing the suffix:
-    <br>####: Numbers<br>XXXX: Capital Letters<br>xxxx: Lower Case Letters
-    <br>****: Capital OR Lower Case Letters<br>8888: Both Letters And Numbers</p>
-  <p id="specificSuffixTxt">Format: https://[BaseURL]/[Suffix]/</p>
-  <input type="radio" name="customURLRad" onclick="swapRadio('randomSuffRad')">Random Suffix
-  <input type="radio" name="customURLRad" checked="checked" onclick="swapRadio('specificSuffRad')">Specific Suffix
-  <br><br>
-  <button id="showHideSearchCriteria">Toggle Search</button>
-  <div id="searchCriteriaDiv" style="display:none">
+  <div id="basicModeDiv">
     <br>
-    <h3>Search Criteria?</h3>
-    <input type="text" placeholder="Input Search Criteria" id="searchCriteriaInp">
-    <p id="dynamicSearchTxt">What are you searching for?</p>
-    <p style="display: none" id="randomSearchTxt">Use the following text for randomizing the search criteria:
+    <p>Select a webpage from the following list to fetch a random page! (Generally speaking, you might not find anything...)</p>
+    <select name="websiteDropdown" id="websiteDropdown">
+      <option value="you">Youtube</option>
+      <option value="img">Imgur</option>
+      <option value="wiki">Wikipedia</option>
+    </select>
+  </div>
+
+  <div id="advancedModeDiv" style="display: none">
+    <br><br>
+    <h3>Customize the URL!</h3>
+    <input type="text" placeholder="Input Base Website URL" id="baseURLInp"><br><br>
+    <input type="text" placeholder="Input Website URL Suffix" id="suffixURLInp">
+    <p style="display: none" id="randomSuffixTxt">Use the following text for randomizing the suffix:
       <br>####: Numbers<br>XXXX: Capital Letters<br>xxxx: Lower Case Letters
       <br>****: Capital OR Lower Case Letters<br>8888: Both Letters And Numbers</p>
-    <input type="radio" name="searchCriteriaRad" onclick="swapRadio('dynamicTxtRad')">Dynamic Text
-    <input type="radio" name="searchCriteriaRad" checked="checked" onclick="swapRadio('specificTxtRad')">Specific Text
-
+    <p id="specificSuffixTxt">Format: https://[BaseURL]/[Suffix]/</p>
+    <input type="radio" name="customURLRad" onclick="swapRadio('randomSuffRad')">Random Suffix
+    <input type="radio" name="customURLRad" checked="checked" onclick="swapRadio('specificSuffRad')">Specific Suffix
     <br><br>
-    <h3>How Many Times?</h3>
-    <input type="number" placeholder="Input How Many Times You'd Like To Find The Criteria" id="randCountInp">
-    <br>
-  </div></div>
+    <button id="showHideSearchCriteria">Toggle Search</button>
+    <div id="searchCriteriaDiv" style="display:none">
+      <br>
+      <h3>Search Criteria?</h3>
+      <input type="text" placeholder="Input Search Criteria" id="searchCriteriaInp">
+      <p id="dynamicSearchTxt">What are you searching for?</p>
+      <p style="display: none" id="randomSearchTxt">Use the following text for randomizing the search criteria:
+        <br>####: Numbers<br>XXXX: Capital Letters<br>xxxx: Lower Case Letters
+        <br>****: Capital OR Lower Case Letters<br>8888: Both Letters And Numbers</p>
+      <input type="radio" name="searchCriteriaRad" onclick="swapRadio('dynamicTxtRad')">Dynamic Text
+      <input type="radio" name="searchCriteriaRad" checked="checked" onclick="swapRadio('specificTxtRad')">Specific Text
 
-<br><br><br>
-<button id="activateRandomizer">RANDOMIZE!</button>
+      <br><br>
+      <h3>How Many Times?</h3>
+      <input type="number" placeholder="Input How Many Times You'd Like To Find The Criteria" id="randCountInp">
+      <br>
+    </div></div>
+
+  <br><br><br>
+  <button id="activateRandomizer">RANDOMIZE!</button><br><br>
+  <input type="radio" name="showConsole" onclick="swapRadio('showConsole')">Show Console
+  <input type="radio" name="showConsole" onclick="swapRadio('openWebpage')">Open Webpage In New Tab
+</div>
+<div id="console" style="display: none">
+</div>
 <br><br><br><br>
 <a href="faq.html">FAQ</a>
 </body>
