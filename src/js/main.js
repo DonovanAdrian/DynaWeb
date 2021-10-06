@@ -4,6 +4,7 @@
  * with written consent under any circumstance.
  */
 
+let mainWebDiv;
 let basicModeDiv;
 let dropDown;
 let advancedModeDiv;
@@ -18,31 +19,35 @@ let randomSearchTxt;
 let dynamicSearchTxt;
 let randCountInp;
 let activateRandomizer;
+let consoleDiv;
 
 let urlString = "";
 let urlCountInt = 1;
 let basicModeBool = true;
 let randomSuffixBool = false;
 let randomSearchBool = false;
+let openWebpageBool = false;
 let debugBool = true;
 
 
 
 window.onload = function initialize() {
-  basicModeDiv = document.getElementById('basicModeDiv');
+  mainWebDiv = document.getElementById("mainWebDiv");
+  basicModeDiv = document.getElementById("basicModeDiv");
   dropDown = document.getElementById("websiteDropdown");
   advancedModeDiv = document.getElementById("advancedModeDiv");
   baseURLInp = document.getElementById("baseURLInp");
   suffixURLInp = document.getElementById("suffixURLInp");
   randomSuffixTxt = document.getElementById("randomSuffixTxt");
   specificSuffixTxt = document.getElementById("specificSuffixTxt");
-  showHideSearchCriteria = document.getElementById('showHideSearchCriteria');
-  searchCriteriaDiv = document.getElementById('searchCriteriaDiv');
+  showHideSearchCriteria = document.getElementById("showHideSearchCriteria");
+  searchCriteriaDiv = document.getElementById("searchCriteriaDiv");
   searchCriteriaInp = document.getElementById("searchCriteriaInp");
   randomSearchTxt = document.getElementById("randomSearchTxt");
   dynamicSearchTxt = document.getElementById("dynamicSearchTxt");
   randCountInp = document.getElementById("randCountInp");
   activateRandomizer = document.getElementById("activateRandomizer");
+  consoleDiv = document.getElementById("consoleDiv");
 
   activateRandomizer.onclick = function() {
     pageRandomizer();
@@ -92,10 +97,16 @@ function pageRandomizer() {
 }
 
 function openUrl(){
-  console.log(urlCountInt + ": " + urlString);
-  window.open(urlString, '_blank').focus();
-  fetchImage(urlString);
-  urlCountInt++;
+  if (!openWebpageBool) {
+    alert("Sorry bruh, this doesn't work yet!");
+    //showHideTxt(mainWebDiv, "none");
+    //showHideTxt(consoleDiv, "block");
+    fetchImage(urlString);
+  } else {
+    console.log(urlCountInt + ": " + urlString);
+    window.open(urlString, '_blank').focus();
+    urlCountInt++;
+  }
 }
 
 function fetchDynamic(userInput) {
@@ -201,6 +212,12 @@ function swapRadio(btn) {
       randomSearchBool = false;
       showHideTxt(randomSearchTxt, "none");
       showHideTxt(dynamicSearchTxt, "block");
+      break;
+    case 'showConsole':
+      openWebpageBool = false;
+      break;
+    case 'openWebpage':
+      openWebpageBool = true;
       break;
     default:
       if (debugBool)
