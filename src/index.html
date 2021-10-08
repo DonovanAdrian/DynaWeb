@@ -23,7 +23,7 @@
 <body style="display: table-cell; vertical-align: middle; margin: 2em auto">
 
 
-<div id="mainWeb">
+<div id="mainWebDiv">
   <h1>OCRWeb</h1>
   <input type="radio" name="basAdvRad" checked="checked" onclick="basicAdvancedMode('basic')">Basic Mode
   <input type="radio" name="basAdvRad" onclick="basicAdvancedMode('advanced')">Advanced Mode
@@ -71,9 +71,9 @@
   <br><br><br>
   <button id="activateRandomizer">RANDOMIZE!</button><br><br>
   <input type="radio" name="showConsole" onclick="swapRadio('showConsole')">Show Console
-  <input type="radio" name="showConsole" onclick="swapRadio('openWebpage')">Open Webpage In New Tab
+  <input type="radio" name="showConsole" onclick="swapRadio('openWebpage')" checked="checked">Open Webpage In New Tab
 </div>
-<div id="console" style="display: none">
+<div id="consoleDiv" style="display: none">
 </div>
 <br><br><br><br>
 <a href="faq.html">FAQ</a>
